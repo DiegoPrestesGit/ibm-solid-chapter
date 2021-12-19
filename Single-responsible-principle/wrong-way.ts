@@ -1,38 +1,33 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-export default class Carro {
-  constructor(cor = null, modelo = null, placa = null, id = null) {
+class Carro {
+  cor: String;
+  modelo: String;
+  id: String;
+
+  constructor(cor: String = null, modelo: String = null, id: String = null) {
     this.id = id;
     this.cor = cor;
     this.modelo = modelo;
-    this.placa = placa;
-    this.conectarAoMongo();
   }
 
-  conectarAoMongo() {
-    mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
-  }
-
-  salvar() {
+  salvar(): void {
     const CarroSchema = new mongoose.Schema({
       cor: String,
       modelo: String,
-      placa: String,
     });
     const CarroModel = mongoose.model("Carro", CarroSchema);
     const carro = new CarroModel({
       cor: this.cor,
       modelo: this.modelo,
-      placa: this.placa,
     });
     carro.save();
   }
 
-  buscarPorId(id) {
+  buscarPorId(id: String): void {
     const CarroSchema = new mongoose.Schema({
       cor: String,
       modelo: String,
-      placa: String,
     });
     const CarroModel = mongoose.model("Carro", CarroSchema);
     return CarroModel.findById(id);
