@@ -12,6 +12,8 @@ class Carro {
         this.placa = placa;
         this.id = id;
     }
+
+    validacao() {/*...*/}
 }
 
 const CarroSchema = new mongoose.Schema({
@@ -25,7 +27,7 @@ class CarroService {
     }
 
 
-    buscarPorId(id: String) {
+    carroJaExiste(id: String) {
         const carro = CarroSchema.findById(id);
         return carro;
     }

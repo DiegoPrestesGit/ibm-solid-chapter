@@ -11,6 +11,8 @@ class Carro {
     this.modelo = modelo;
   }
 
+  validacao(): void {/*...*/}
+
   salvar(): void {
     const CarroSchema = new mongoose.Schema({
       cor: String,
@@ -24,12 +26,12 @@ class Carro {
     carro.save();
   }
 
-  buscarPorId(id: String): void {
+  carroJaExiste(): void {
     const CarroSchema = new mongoose.Schema({
       cor: String,
       modelo: String,
     });
     const CarroModel = mongoose.model("Carro", CarroSchema);
-    return CarroModel.findById(id);
+    return CarroModel.findById(this.id);
   }
 }
