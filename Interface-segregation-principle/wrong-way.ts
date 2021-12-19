@@ -1,12 +1,9 @@
-interface AudioMediaPlayer {
+interface GenericPlayer {
   playAudio(soundName: string): void
-}
-
-interface VideoMediaPlayer {
   playVideo(videoName: string): void
 }
 
-class MediaPlayer implements AudioMediaPlayer, VideoMediaPlayer {
+class GenericMediaPlayer implements GenericPlayer {
   playAudio(soundName: string): void {
     console.log(`playing the video: ${soundName}`)
   }
@@ -16,7 +13,7 @@ class MediaPlayer implements AudioMediaPlayer, VideoMediaPlayer {
   }
 }
 
-class VlcMediaPlayer implements AudioMediaPlayer, VideoMediaPlayer {
+class GenericVlcMediaPlayer implements GenericPlayer {
 
   playVideo(videoName: string): string {
     // really nice implementation override
@@ -29,7 +26,11 @@ class VlcMediaPlayer implements AudioMediaPlayer, VideoMediaPlayer {
   }
 }
 
-class WinampMediaPlayer implements AudioMediaPlayer {
+class GenericWinampMediaPlayer implements GenericPlayer {
+  playVideo(videoName: string): void {
+    throw new Error("not really implemented, brah.")
+  }
+
   playAudio(soundName: string): string {
     // really nice implementation override
     return `really nice music: ${soundName}`
