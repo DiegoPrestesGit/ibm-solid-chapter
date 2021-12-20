@@ -14,7 +14,6 @@ class GenericMediaPlayer implements GenericPlayer {
 }
 
 class GenericVlcMediaPlayer implements GenericPlayer {
-
   playVideo(videoName: string): string {
     // really nice implementation override
     return `nice video: ${videoName}`
