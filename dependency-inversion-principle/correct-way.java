@@ -1,14 +1,18 @@
 public class Customer {
-
   private int id;
   private String firstName;
   private String lastName;
 
-  public Customer(final int id, final String firstName, final String lastName) {
+  public Customer(
+    final int id, 
+    final String firstName, 
+    final String lastName) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
   }
+
+  // getters and setters...
 
   public int getId() {
     return id;
@@ -124,47 +128,49 @@ public interface DataSource {
 }
 
 public class MySQLDataSource implements DataSource {
-    private MysqlDataSource dataSource;
+  private MysqlDataSource dataSource;
 
-    @Override
-    public void createConnection(DatabaseConfig databaseConfig) {
-        dataSource = new MysqlDataSource();
-        dataSource.setUrl(databaseConfig.getUrl());
-        dataSource.setUser(databaseConfig.getUserName());
-        dataSource.setPassword(databaseConfig.getPassword());
-    }
+  @Override
+  public void createConnection(
+    DatabaseConfig databaseConfig
+  ) {
+    dataSource = new MysqlDataSource();
+    dataSource.setUrl(databaseConfig.getUrl());
+    dataSource.setUser(databaseConfig.getUserName());
+    dataSource.setPassword(databaseConfig.getPassword());
+  }
 
-    @Override
-    public Connection getConnection() {
-        try {
-            return dataSource.getConnection();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return null;
+  @Override
+  public Connection getConnection() {
+    try {
+        return dataSource.getConnection();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
     }
+    return null;
+  }
 }
 
 public class H2DataSource implements DataSource {
-    private JdbcDataSource dataSource;
+  private JdbcDataSource dataSource;
 
-    @Override
-    public void createConnection(DatabaseConfig databaseConfig) {
-        dataSource = new JdbcDataSource();
-        dataSource.setURL(databaseConfig.getUrl());
-        dataSource.setUser(databaseConfig.getUserName());
-        dataSource.setPassword(databaseConfig.getPassword());
-    }
+  @Override
+  public void createConnection(DatabaseConfig databaseConfig) {
+    dataSource = new JdbcDataSource();
+    dataSource.setURL(databaseConfig.getUrl());
+    dataSource.setUser(databaseConfig.getUserName());
+    dataSource.setPassword(databaseConfig.getPassword());
+  }
 
-    @Override
-    public Connection getConnection() {
-        try {
-            return dataSource.getConnection();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return null;
+  @Override
+  public Connection getConnection() {
+    try {
+        return dataSource.getConnection();
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
     }
+    return null;
+  }
 }
