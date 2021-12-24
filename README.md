@@ -1,11 +1,12 @@
-# IBM SOLID CHAPTER
+# IBM SOLID CHAPTER (SUCCEED)
 
 ## TODO
 
-- [ ] por que usar SOLID?
-- [ ] single responsability principle
-- [ ] open closed principle
-- [ ] Liskov substitution principle
+- [x] por que usar SOLID?
+- [x] single responsability principle
+- [x] open closed principle
+- [x] Liskov substitution principle
 - [x] interface segregation principle
-- [ ] dependency inversion principle
-- [ ] por que não usar SOLID? (e como conciliar um código excelente com nossos prazos)
+- [x] dependency inversion principle
+- [x] por que não usar SOLID? (e como conciliar um código excelente com nossos prazos)
+
